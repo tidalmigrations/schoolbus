@@ -22,3 +22,4 @@ To generate all the files necessary to spin up a fresh demo instance run the dem
 #+BEGIN_SRC bash
   ./demo.sh
 #+END_SRC
+Note: if you're running this script for the first time, the process can be quite length. On my machine, it takes >30 minutes to pull down and build all the necessary images
