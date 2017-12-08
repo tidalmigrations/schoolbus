@@ -93,16 +93,24 @@ oc new-app postgresql \
 oc expose service frontend
 
 # Parse route
-route=$(oc get routes | grep frontend | awk '{printf $2}')
-frontend=http://$route
+frontend="http://$(oc get routes | grep frontend | awk '{printf $2}')"
+
 
 # Generating data
 /ApiSpec/TestData/load-all.sh "local"
 
 # Getting auth token and then loading up main app
-echo "Authorizing with dev token"
-open $frontend/api/authentication/dev/token/SCURRAN
+echo $frontend/api/authentication/dev/token/
+
+if [ $uname="Darwin" ]; then
+  echo -e "\n\nAuthorizing with dev token\n user"
+  open $frontend/api/authentication/dev/token/SCURRAN
+fi
 
 sleep 3
-echo "Loading app"
-open $frontend
+echo $frontend
+
+if [ $uname="Darwin" ]; then
+  echo "Loading app"
+  open $frontend
+fi
