@@ -6,8 +6,10 @@ Install the CLI utility
   brew install docker
 #+END_SRC
 
-Install the docker client
+Install the docker client:
+
 https://www.docker.com/docker-mac
+
 *** Openshift 3
 #+BEGIN_SRC bash
   brew install openshift-cli
