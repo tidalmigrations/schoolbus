@@ -97,7 +97,8 @@ frontend="http://$(oc get routes | grep frontend | awk '{printf $2}')"
 
 
 # Generating data
-./ApiSpec/TestData/load-all.sh "local"
+cd ./ApiSpec/TestData/
+./load-all.sh "local"
 
 # Getting auth token and then loading up main app
 echo $frontend/api/authentication/dev/token/
