@@ -1,4 +1,6 @@
 #!/bin/bash
+# Execute all commands in root directory
+cd ..
 
 if ! hash oc 2>/dev/null; then
   printf "Please install openshift-cli. Example: \nbrew install openshift-cli";
@@ -38,7 +40,7 @@ while [ "$pods_built" -lt "11" ]; do
     exit
   fi
   echo -n "."
-  sleep 5
+  sleep 3
   pods_built=$(oc get is | grep -c "latest")
 done
 
@@ -73,6 +75,9 @@ oc create -f schoolbus-deployment.json # Use same as output file in the previous
 oc delete dc postgresql
 oc delete service postgresql
 
+# Pull down image
+# docker pull centos/postgresql-95-centos7
+
 #get main server name
 pg_user=$(oc env dc/server --list| grep POSTGRESQL_USER)
 pg_user=${pg_user#*=}
@@ -87,7 +92,7 @@ oc new-app postgresql \
 # Generate route   
 oc expose service frontend
 
-#Parse route
+# Parse route
 route=$(oc get routes | grep frontend | awk '{printf $2}')
 frontend=http://$route
 
