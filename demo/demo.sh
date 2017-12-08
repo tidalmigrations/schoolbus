@@ -31,7 +31,7 @@ oc get is
 
 pods_built=$(oc get is | grep -c "latest")
 start_time=$(date +"%s")
-max_time=$(expr $start_time + 1350)
+max_time=$(expr $start_time + 2700)
 while [ "$pods_built" -lt "11" ]; do
   current_time=$(date +"%s")
   if [ "$current_time" -gt "$max_time" ]; then
