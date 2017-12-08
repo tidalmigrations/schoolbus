@@ -16,7 +16,11 @@ https://www.docker.com/docker-mac
 #+END_SRC
 ** Setup
 *** Docker
+**** Insecure Registries
 In your docker client, under the daemon section, add 172.30.0.0/16 to the list of insecure registries.
+**** Docker Resources
+In your docker client, under the advanced sections, set Memory to 4gb.
+
 ** Running
 To generate all the files necessary to spin up a fresh demo instance run the demo script below.
 #+BEGIN_SRC bash
