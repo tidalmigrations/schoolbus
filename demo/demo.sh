@@ -84,12 +84,12 @@ pg_user=${pg_user#*=}
 pg_password=$(oc env dc/server --list | grep POSTGRESQL_PASSWORD)
 pg_password=${pg_password#*=}
 
-oc new-app postgresql \ 
+oc new-app postgresql \
    -e POSTGRESQL_USER=$pg_user \
    -e POSTGRESQL_PASSWORD=$pg_password \
    -e POSTGRESQL_DATABASE=schoolbus
 
-# Generate route   
+# Generate route
 oc expose service frontend
 
 # Parse route
@@ -106,5 +106,3 @@ open $frontend/api/authentication/dev/token/SCURRAN
 sleep 3
 echo "Loading app"
 open $frontend
-
-.
