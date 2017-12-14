@@ -1,5 +1,5 @@
 #!/bin/bash
-local=$(oc get routes | grep frontend | awk '{printf $2}')
+local=http://$(oc get routes | grep frontend | awk '{printf $2}')
 dev=http://server-tran-schoolbus-dev.pathfinder.gov.bc.ca
 test=http://server-tran-schoolbus-test.pathfinder.gov.bc.ca
 
