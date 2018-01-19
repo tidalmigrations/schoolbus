@@ -1,0 +1,45 @@
+# NOTE: PREREQUISITE required to build the web service:
+# the web service is built using the image from ./Client as a base image
+# to create that base image you can run:
+# cd ./Client
+# docker build . -t tran-schoolbus-tools/client
+#
+# This stack can then be started with:
+# `docker-compose db` in one session and
+# `docker-compose web` in another
+#
+# The web service should be viewable on the host machine at localhost:8080
+#
+# TODO the web service isn't able to correctly proxy requests to the api service. it should proxy them via 'api:59836'.
+#
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: frontend.Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - api
+  api:
+    build:
+      context: .
+      dockerfile: server.Dockerfile
+    depends_on:
+      - db
+    environment:
+      DATABASE_SERVICE_NAME: 'db'
+      POSTGRESQL_USER: 'postgres'
+      POSTGRESQL_PASSWORD: 'developement123'
+      POSTGRESQL_DATABASE: 'postgres'
+    ports:
+      - "59836"
+  db:
+    image: postgres:9.4-alpine
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'developement123'
+      POSTGRES_DB: 'postgres'
+    volumes:
+      - "./db_data:/var/lib/postgresql/data"
