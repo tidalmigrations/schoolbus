@@ -971,7 +971,7 @@
       "displayName": "Source Repository",
       "description": "The source repository to use for the builds.",
       "required": true,
-      "value": "https://github.com/bcgov/schoolbus.git"
+      "value": "https://github.com/RUSSBTEST/schoolbus.git"
     },	
     {
       "name": "GIT_REFERENCE",
