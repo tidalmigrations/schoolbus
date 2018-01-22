@@ -5,8 +5,8 @@
 # docker build . -t tran-schoolbus-tools/client
 #
 # This stack can then be started with:
-# `docker-compose db` in one session and
-# `docker-compose web` in another
+# `docker-compose up db` in one session and
+# `docker-compose up web` in another
 #
 # The web service should be viewable on the host machine at localhost:8080
 #
