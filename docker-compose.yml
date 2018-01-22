@@ -33,6 +33,8 @@ services:
       POSTGRESQL_USER: 'postgres'
       POSTGRESQL_PASSWORD: 'developement123'
       POSTGRESQL_DATABASE: 'postgres'
+      ASPNETCORE_ENVIRONMENT: 'Development'
+      UserInitializationFile: '/app/Server/example_users.json'
     ports:
       - "59836"
   db:

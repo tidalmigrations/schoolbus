@@ -13,6 +13,9 @@ RUN dotnet restore
 
 COPY Server /app/Server
 WORKDIR /app/Server/src/SchoolBusAPI/
+
+COPY /ApiSpec/TestData/example_users.json /app/Server/example_users.json
+
 RUN dotnet restore
 
 ENV ASPNETCORE_URLS http://*:8080
