@@ -5,13 +5,26 @@
 # docker build . -t tran-schoolbus-tools/client
 #
 # This stack can then be started with:
+# First create the docker volume manually - This is done to avoid permission issues with the containers access the volume
+# these issues were found on Windows.
 # `docker volume create --name test-db -d local`
+#
+# from the root of the project, in the dir with the `docker-compose.yml` file
 # `docker-compose up db` in one session and
 # `docker-compose up web` in another
 #
 # The web service should be viewable on the host machine at localhost:8080
+# If you are running docker-machine then you need to replace localhost with the IP address of the docker-machine (likely found in Virtualbox)
 #
-# TODO the web service isn't able to correctly proxy requests to the api service. it should proxy them via 'api:59836'.
+# Loading test data:
+#
+# - Go to the directory; ./ApiSpec/TestData
+#
+# On unix run: ./load-all.sh http://localhost:8080/
+#
+# On windows run: ./load-all.bat http://localhost:8080/
+#
+# Again if you are using docker-machine you need to change localhost to the IP address of the docker-machine
 #
 version: '3'
 services:
