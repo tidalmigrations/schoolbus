@@ -5,6 +5,7 @@
 # docker build . -t tran-schoolbus-tools/client
 #
 # This stack can then be started with:
+# `docker volume create --name test-db -d local`
 # `docker-compose up db` in one session and
 # `docker-compose up web` in another
 #
@@ -44,4 +45,9 @@ services:
       POSTGRES_PASSWORD: 'developement123'
       POSTGRES_DB: 'postgres'
     volumes:
-      - "./db_data:/var/lib/postgresql/data"
+#      - "./db_data:/var/lib/postgresql/data"
+      - test-db:/var/lib/postgresql/data
+volumes:
+    test-db:
+      external: true
+
