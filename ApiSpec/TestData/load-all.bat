@@ -1,5 +1,5 @@
-SET TARGET_SERVER=http://localhost:59836
-SET TARGET_SERVER=http://frontend-tran-schoolbus-dev.10.0.75.2.nip.io
+SET TARGET_SERVER=http://localhost:8080
+rem SET TARGET_SERVER=http://frontend-tran-schoolbus-dev.10.0.75.2.nip.io
 SET SBI_USER=SCURRAN
 
 curl -c cookie %TARGET_SERVER%/api/authentication/dev/token/%SBI_USER%
